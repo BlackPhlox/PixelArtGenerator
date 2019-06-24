@@ -153,10 +153,7 @@ void mouseClicked() {
     selectorIndex--;
   } else if (mouseButton == CENTER){
     //Create Image
-    showPreview = !showPreview;
-    if(optionsVar[1] != 0 && optionsVar[2] != 0 && optionsVar[3] != 0){
-      processedImage = createGraphics(abs(optionsVar[2]*optionsVar[1]),abs(optionsVar[3]*optionsVar[1]));
-    } //<>//
+    createPreview(); //<>//
   }
   wrapSelector();
 }
@@ -166,6 +163,13 @@ void wrapSelector(){
     selectorIndex = 0;
   } else if (selectorIndex < 0){
     selectorIndex = options.length-1;
+  }
+}
+
+void createPreview(){
+  showPreview = !showPreview;
+    if(optionsVar[1] != 0 && optionsVar[2] != 0 && optionsVar[3] != 0){
+      processedImage = createGraphics(abs(optionsVar[2]*optionsVar[1]),abs(optionsVar[3]*optionsVar[1]));
   }
 }
 
@@ -199,6 +203,8 @@ void keyPressed() {
     resetImage();
   } else if(key == 'c' || key == 'C'){
     mouseCenter = !mouseCenter;
+  } else if (key == 'p' || key == 'P'){
+    createPreview();
   }
 }
 
